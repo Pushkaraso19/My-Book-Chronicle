@@ -1,0 +1,57 @@
+<%- include("partials/header.ejs") %>
+<div class="add-book-container">
+    <div class="book-image">
+        <img src="/images/AddFormImage.jpeg" alt="Vintage book with feather quill and ink">
+    </div>
+    <div class="book-form-container">
+        <h1>Add Book</h1>
+        <form action="/add-books" method="POST" class="vintage-form">
+            <div class="form-field">
+                <label for="title">Title: *</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+
+            <div class="form-field">
+                <label for="author">Author: *</label>
+                <input type="text" id="author" name="author" required>
+            </div>
+
+            <div class="form-field">
+                <label for="dateRead">Date Read: *</label>
+                <input type="date" id="dateRead" name="dateRead" max="<%= new Date().toISOString().split('T')[0] %>" required>
+            </div>
+
+            <div class="form-field">
+                <label for="isbn">ISBN: (for cover page)</label>
+                <input type="number" id="isbn" name="isbn">
+            </div>
+
+            <div class="form-field">
+                <label for="personalNotes">Personal Notes:</label>
+                <textarea id="personalNotes" name="personalNotes"></textarea>
+            </div>
+
+            <div class="form-field">
+                <label for="rating">Rating:</label>
+                <select id="rating" name="rating" class="rating-dropdown">
+                    <option value="" disabled selected>Select a rating</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="vintage-button">Add Book</button>
+
+            <label>* are required fields</label>
+        </form>
+    </div>
+</div>
+<%- include("partials/footer.ejs") %>

@@ -1,0 +1,56 @@
+<%- include("partials/header.ejs") %>
+<div class="content-container">
+    <% if (locals.books  && books.length > 0) { %>
+        <div class="books-grid">
+            <% books.forEach(book => { %>
+                <div class="book-card">
+                    <!-- Book Layout -->
+                    <div class="book-layout">
+                        <!-- Book Cover -->
+                        <div class="book-cover">
+                            <img src="/book-cover/<%= book.isbn %>" 
+                                alt="Cover of <%= book.title %>" 
+                                onerror="this.onerror=null;this.src='/images/FallBackCover.jpeg';" />
+                        </div>                    
+                        <!-- Book Details -->
+                        <div class="book-details">
+                            <!-- Title -->
+                            <h2 class="book-title"><%= book.title %></h2>
+                            <!-- Author and Read Date -->
+                            <div class="book-meta">
+                                <span class="book-author"><i class="fa fa-user"></i> <%= book.author %></span>
+                                <span class="book-date"><i class="fa fa-calendar"></i> <%= new Date(book.dateread).toLocaleDateString() %></span>
+                                <span class="book-rating"><i class="fa fa-star" style="color: #CFA999;"></i> <%= book.rating %>/10</span>
+                            </div>
+                        </div>
+                        <!-- Dropdown Menu -->
+                        <div class="dropdown">
+                            <button class="dropbtn">
+                                <i class="fa fa-ellipsis-v"></i>
+                            </button>
+                            <div class="dropdown-content">
+                                <a href="/delete-book/<%= book.id %>" class="delete-btn">
+                                    <i class="fa fa-trash"></i> Delete
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Personal Notes -->
+                    <div class="personal-notes">
+                        <h3>Personal Notes</h3>
+                        <p><%= book.personalnote || "No note added." %></p>
+                    </div>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <h2 class="no-books-message">
+                <% if (locals.isSearch) { %>
+                    No books found matching "<%= locals.searchTerm %>"
+                <% } else { %>
+                    No books added to your collection yet
+                <% } %>
+            </h2>
+        <% } %>
+    </div>
+</div>
+<%- include("partials/footer.ejs") %>

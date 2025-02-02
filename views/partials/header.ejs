@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/images/Logo.png" type="image/x-icon">
+        <link rel="stylesheet" href="/styles/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>My Book Chronicle</title>
+    </head>
+    <body>
+        <header>
+            <div class="header-container">
+                <!-- Top Section with Logo and Search -->
+                <div class="header-top">
+                    <div class="logo-container">
+                        <div class="logo-circle">
+                            <img src="/images/Logo.png" alt="My Book Chronicle Logo">
+                        </div>
+                        <h1>My Book Chronicle</h1>
+                    </div>
+                    
+                    <div class="search-container">
+                        <form action="/search" method="post">
+                            <input name="title" type="text" placeholder="Search books..." class="search-input">
+                            <button type="submit" class="search-btn">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Navigation Section -->
+                <nav class="main-nav">
+                    <ul>
+                        <li>
+                            <a href="/">
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                                <span>Home</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="add-books">
+                                <i class="fa fa-book" aria-hidden="true"></i>
+                                <span>Add Books</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="about">
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                <span>About</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Add this script at the end of your header template -->
+        <script>
+            document.querySelector('.hamburger-btn').addEventListener('click', function() {
+                document.querySelector('.main-nav').classList.toggle('show');
+                this.querySelector('i').classList.toggle('fa-bars');
+                this.querySelector('i').classList.toggle('fa-times');
+            });
+        </script>
